@@ -23,19 +23,19 @@
   </style>
 </head>
 <body>
-  <h1>QR Code with Current Time</h1>
+  <h1>Quelle heure est-il ? Scannez le QR code pour le savoir :)</h1>
   <div id="qr-code"></div>
   <div id="time"></div>
 
   <script>
     // Function to get current time in HH:MM:SS format
-    function getCurrentTime() {
+    /*function getCurrentTime() {
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
       return `${hours}:${minutes}:${seconds}`;
-    }
+    }*/
 
     // Initialize QR Code
     const qrCodeElement = document.getElementById('qr-code');
