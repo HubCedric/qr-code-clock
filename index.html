@@ -1,4 +1,59 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Clock</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #qr-code {
+      margin: 20px auto;
+      width: 200px;
+      height: 200px;
+    }
+    #time {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+  </style>
 </head>
+<body>
+  <h1>QR Code with Current Time</h1>
+  <div id="qr-code"></div>
+  <div id="time"></div>
+
+  <script>
+    // Function to get current time in HH:MM:SS format
+    function getCurrentTime() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      return `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Initialize QR Code
+    const qrCodeElement = document.getElementById('qr-code');
+    const qrCode = new QRCode(qrCodeElement, {
+      width: 200,
+      height: 200,
+    });
+
+    // Function to update QR Code and displayed time
+    function updateQRCode() {
+      const currentTime = getCurrentTime();
+      document.getElementById('time').textContent = currentTime;
+      qrCode.makeCode(currentTime); // Update QR code with current time
+    }
+
+    // Update QR code every second
+    updateQRCode(); // Initial call
+    setInterval(updateQRCode, 1000);
+  </script>
+</body>
+</html>
